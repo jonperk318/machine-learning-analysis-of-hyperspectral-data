@@ -141,7 +141,8 @@ class acquisition:
 ### Colors
 random_color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
              for i in range(100)]
-color = ['#3a86ff', '#ffbe0b', '#ff006e', '#8338ec', '#fb5607', '#390099'] * 1000
+color = ["#0095EF", "#EFCA00", "#F31D64", "#6A38B3", 
+         "#3C5081", "#A224AD", "#43C68B", "#FE433C"] * 1000
 
 
 ### Reading Data
