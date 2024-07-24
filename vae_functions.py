@@ -1,5 +1,10 @@
 # UNSUPERVISED VAE
 
+import matplotlib as mpl
+import matplotlib.pyplot as plt; plt.rcParams['figure.dpi'] = 300
+from matplotlib.gridspec import GridSpec
+import numpy as np
+
 save_directory = "./svg-figures/" # modify to save figures as a specified file extension
 file_extension = ".svg"
 
@@ -285,8 +290,8 @@ def custom_spect_label_plot(suptitle, img, pts, wav, save=False):
         column_count = 0
         for j in range(columns):
 
-            fig_plt = fig.add_subplot(gs[i,j])
-            fig_plt.plot(wav, img[:,pts[j][0],pts[j][1]], c=cmap_list[j], lw=3)
+            fig_plt = fig.add_subplot(gs[i, j])
+            fig_plt.plot(wav, img[:, pts[j][0], pts[j][1]], c=cmap_list[j], lw=3)
             #plt.text(300, 370, str(column_count))
             #fig_plt.set_title(method_names[row_count] + point_names[column_count])
             #fig_plt.tick_params(color=color[j])

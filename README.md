@@ -6,6 +6,9 @@ inorganic-organic perovskite materials on the nanometer scale.
 
 ## Installation and Usage
 
+**The .h5py hyperspectral datasets are not publicly available at this time as they have not yet been published. 
+However, when they are published, they will be included in this repository.**
+
 The Jupyter Notebooks in this project require Python version 3.12.2 or later.
 
 Create a new virtual environment and clone the repository with `git clone https://github.com/jonperk318/machine-learning-analysis-of-hyperspectral-data`. 

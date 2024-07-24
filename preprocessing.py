@@ -14,6 +14,10 @@ from scipy.ndimage import median_filter, gaussian_filter
 from scipy.signal import find_peaks, savgol_filter
 from skimage.restoration import denoise_wavelet
 
+cmap = "viridis"
+save_directory = "./png-figures/" # modify to save figures as a specified file extension
+file_extension = ".png"
+
 
 ### Functions and Classes
 def cropper(wavelength_file, spectra_file, shortwavelength, longwavelength):
@@ -432,27 +436,20 @@ def initial_plot(suptitle, img1, img2, spect_pt, x_points, y_points, wav,
 f1_sb_mean = np.mean(f1_img2_1d[0:100])
 f1_sub_back = [(i - f1_sb_mean) for i in f1_img2_1d]
 f1_sub_back = [i.clip(min=0) for i in f1_sub_back]
-f1_sub_back = np.reshape(f1_sub_back, (f1_zpix, f1_ypix, f1_xpix), order='C')
 
-f1_sub_back_1d = np.reshape(f1_sub_back, (f1_zpix*f1_ypix*f1_xpix), order='C')
-f1_sb_median = median_filter(
-    f1_sub_back_1d, size=3, footprint=None, output=None, mode='reflect', cval=0.0, origin=0)
+f1_sb_median = median_filter(f1_sub_back, size=3, footprint=None, output=None, mode='reflect', cval=0.0, origin=0)
 f1_sb_median = np.reshape(f1_sb_median, (f1_zpix, f1_ypix, f1_xpix), order='C')
 
 # Grain 2
 f2_sb_mean = np.mean(f2_img2_1d[0:100])
 f2_sub_back = [(i - f2_sb_mean) for i in f2_img2_1d]
 f2_sub_back = [i.clip(min=0) for i in f2_sub_back]
-f2_sub_back = np.reshape(f2_sub_back, (f2_zpix, f2_ypix, f2_xpix), order='C')
 
-f2_sub_back_1d = np.reshape(f2_sub_back, (f2_zpix*f2_ypix*f2_xpix), order='C')
-f2_sb_median = median_filter(
-    f2_sub_back_1d, size=2, footprint=None, output=None, mode='reflect', cval=0.0, origin=0)
+f2_sb_median = median_filter(f2_sub_back, size=2, footprint=None, output=None, mode='reflect', cval=0.0, origin=0)
 f2_sb_median = np.reshape(f2_sb_median, (f2_zpix, f2_ypix, f2_xpix), order='C')
 
 f1_denoised_2d = np.reshape(f1_sb_median, (f1_zpix, f1_ypix*f1_xpix), order='C')
 f2_denoised_2d = np.reshape(f2_sb_median, (f2_zpix, f2_ypix*f2_xpix), order='C')
-
 
 ### Important objects
 print("SEM images: f1_img1, f2_img1")
